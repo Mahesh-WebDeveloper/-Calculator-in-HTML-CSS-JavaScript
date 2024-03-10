@@ -1,0 +1,55 @@
+<!DOCTYPE html>    
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator App</title>
+	<link rel="stylesheet" href="calucater.css">
+</head>
+<body>
+	<div class="calculator">
+		<input id="result" type="text" readonly>
+		<div class="buttons">
+			<button class="btn number" onclick="appendToInput('7'); return false;">7</button>
+			<button class="btn number" onclick="appendToInput('8'); return false;">8</button>
+			<button class="btn number" onclick="appendToInput('9'); return false;">9</button>
+			<button class="btn operator" onclick="appendToInput('+'); return false;">+</button>
+			<button class="btn number" onclick="appendToInput('4'); return false;">4</button>
+			<button class="btn number" onclick="appendToInput('5'); return false;">5</button>
+			<button class="btn number" onclick="appendToInput('6'); return false;">6</button>
+			<button class="btn operator" onclick="appendToInput('-'); return false;">-</button>
+			<button class="btn number" onclick="appendToInput('1'); return false;">1</button>
+			<button class="btn number" onclick="appendToInput('2'); return false;">2</button>
+			<button class="btn number" onclick="appendToInput('3'); return false;">3</button>
+			<button class="btn operator" onclick="appendToInput('*'); return false;">*</button>
+			<button class="btn number" onclick="appendToInput('0'); return false;">0</button>
+			<button class="btn operator" onclick="clearInput(); return false;">C</button>
+			<button class="btn operator" onclick="calculate(); return false;">=</button>
+			<button class="btn operator" onclick="appendToInput('/'); return false;">/</button>
+		</div>
+	</div>
+	<script>
+		function appendToInput(value) {
+			var input = document.getElementById("result");
+			input.value += value;
+		}
+
+		function clearInput() {
+			var input = document.getElementById("result");
+			input.value = "";
+		}
+
+		function calculate() {
+			var input = document.getElementById("result");
+			var expression = input.value;
+
+			try {
+				var result = eval(expression);
+				input.value = result;
+			} catch (error) {
+				input.value = "Error";
+			}
+		}
+	</script>
+</body>
+</html>
